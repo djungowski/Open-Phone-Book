@@ -1,0 +1,2 @@
+In order for OpenPhoneBook to work you must create a symlink in your web/bundles folder:
+cd web/bundles/ && ln -s ../../src/OpenPhoneBook/WebBundle/Resources/public/ openphonebook
