@@ -10,6 +10,10 @@ Ext.define('OpenPhoneBook.panel.Navigation', {
     
     collapsed: true,
     
+    titleCollapse: true,
+    
+    frame: true,
+    
     initComponent: function() {
         var menu,
             menuItemLogin,

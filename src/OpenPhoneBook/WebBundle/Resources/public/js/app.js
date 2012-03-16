@@ -12,7 +12,8 @@ Ext.application({
         
         main = Ext.create('Ext.panel.Panel', {
             title: 'Open Phone Book',
-            region: 'center'
+            region: 'center',
+            frame: true
         });
         
         Ext.create('Ext.container.Viewport', {
