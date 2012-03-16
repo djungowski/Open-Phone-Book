@@ -15,17 +15,22 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
                 url: 'phonebook',
                 reader: {
                     type: 'json',
-                    root: ''
+                    root: 'record'
                 }
             }
         });
         
         this.columns = [
-            {header: OpenPhoneBook.Locale.trans('phonebook.name')},
-            {header: OpenPhoneBook.Locale.trans('phonebook.firstname')},
-            {header: OpenPhoneBook.Locale.trans('phonebook.directaccess')},
-            {header: OpenPhoneBook.Locale.trans('phonebook.room')},
+            {header: OpenPhoneBook.Locale.trans('phonebook.name'), dataIndex: 'name'},
+            {header: OpenPhoneBook.Locale.trans('phonebook.firstname'), dataIndex: 'firstname'},
+            {header: OpenPhoneBook.Locale.trans('phonebook.directaccess'), dataIndex: 'directaccess'},
+            {header: OpenPhoneBook.Locale.trans('phonebook.room'), dataIndex: 'room'},
         ];
+        
+        this.toolbar = Ext.create('Ext.toolbar.Paging', {
+            store: this.store,
+            displayInfo: true
+        });
         
         this.on('render', function() {
             this.store.load();

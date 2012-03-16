@@ -3,7 +3,11 @@ Ext.define('OpenPhoneBook.data.model.Phonebook', {
     extend: 'Ext.data.Model',
     
     fields: [
-        {name: 'foo', type: 'int'}
+        {name: 'id', type: 'int'},
+        {name: 'name', type: 'string'},
+        {name: 'firstname', type: 'string'},
+        {name: 'room', type: 'int'},
+        {name: 'directaccess', type: 'int'},
     ]
     
 });
