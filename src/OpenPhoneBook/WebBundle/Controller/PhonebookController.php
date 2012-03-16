@@ -2,6 +2,14 @@
 
 namespace OpenPhoneBook\WebBundle\Controller;
 
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
+use Symfony\Component\Serializer\Serializer;
+
+use Doctrine\ORM\Query;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +22,16 @@ class PhonebookController extends Controller
      */
     public function indexAction()
     {
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
+        
         $data = array(
-            'record' => array(),
-            'total' => 0
+            'record' => $persons,
+            'total' => count($persons)
         );
         
         $response = new Response(
-            json_encode($data),
+            $serializer->serialize($data, 'json'),
             200,
             array(
             	'Content-type', 
