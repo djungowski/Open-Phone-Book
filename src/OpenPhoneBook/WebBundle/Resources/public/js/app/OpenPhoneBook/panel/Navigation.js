@@ -2,7 +2,7 @@ Ext.define('OpenPhoneBook.panel.Navigation', {
     
     extend: 'Ext.panel.Panel',
     
-    title: 'Navigation',
+    title: opbLocale.trans('panel.navigation'),
         
     width: 250,
     

@@ -1,10 +1,13 @@
 Ext.application({
+    
     name: 'OpenPhoneBook',
+    
     launch: function() {
         var navigation,
             main;
         
         this.registerNamespaces();
+        this.setupLocale();
         
         navigation = Ext.create('OpenPhoneBook.panel.Navigation', {
             region: 'west'
@@ -24,7 +27,19 @@ Ext.application({
             ]
         });
     },
+    
     registerNamespaces: function() {
         Ext.Loader.setPath('OpenPhoneBook', 'bundles/openphonebook/js/app/OpenPhoneBook');
+    },
+    
+    setupLocale: function() {
+        var opbLocale;
+        
+        Ext.syncRequire('OpenPhoneBook.locale.Locale');
+        
+        opbLocale = Ext.create('OpenPhoneBook.locale.De');
+        OpenPhoneBook.locale.Locale.setLocale(opbLocale);
+        
+        window.opbLocale = OpenPhoneBook.locale.Locale; 
     }
 });
