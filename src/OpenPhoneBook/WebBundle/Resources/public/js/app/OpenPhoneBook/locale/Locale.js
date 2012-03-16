@@ -1,5 +1,7 @@
 Ext.define('OpenPhoneBook.locale.Locale', {
     
+    alternateClassName: 'OpenPhoneBook.Locale',
+    
     statics: {
         
         locale: null,

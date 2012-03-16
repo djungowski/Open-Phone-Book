@@ -2,6 +2,8 @@ Ext.application({
     
     name: 'OpenPhoneBook',
     
+    alternateClassName: 'Opb.Locale',
+    
     launch: function() {
         var navigation,
             main;
@@ -14,7 +16,7 @@ Ext.application({
         });
         
         main = Ext.create('Ext.panel.Panel', {
-            title: 'Open Phone Book',
+            title: OpenPhoneBook.Locale.trans('panel.main'),
             region: 'center',
             frame: true
         });
@@ -35,6 +37,7 @@ Ext.application({
     setupLocale: function() {
         var opbLocale;
         
+        // Load synchronously, otherwise this won't work
         Ext.syncRequire('OpenPhoneBook.locale.Locale');
         
         opbLocale = Ext.create('OpenPhoneBook.locale.De');
