@@ -29,3 +29,7 @@ _configurator:
 
 _main:
     resource: routing.yml
+
+OpenPhoneBookWebBundle:
+    resource: "@OpenPhoneBookWebBundle/Resources/config/routing.yml"
+    prefix:   /opb
