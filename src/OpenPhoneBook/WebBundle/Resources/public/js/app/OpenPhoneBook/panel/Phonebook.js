@@ -8,7 +8,7 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
     
     initComponent: function() {
         
-        this.store = Ext.create('Ext.data.Store', {
+        this.store = this.store || Ext.create('Ext.data.Store', {
             model: 'OpenPhoneBook.data.model.Phonebook',
             proxy: {
                 type: 'ajax',
@@ -20,14 +20,16 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
             }
         });
         
-        this.columns = [
+        this.columns = this.columns || [
             {header: OpenPhoneBook.Locale.trans('phonebook.name'), dataIndex: 'name'},
             {header: OpenPhoneBook.Locale.trans('phonebook.firstname'), dataIndex: 'firstname'},
             {header: OpenPhoneBook.Locale.trans('phonebook.directaccess'), dataIndex: 'directaccess'},
             {header: OpenPhoneBook.Locale.trans('phonebook.room'), dataIndex: 'room'},
         ];
         
-        this.toolbar = Ext.create('Ext.toolbar.Paging', {
+        this.tbar = this.tbar || Ext.create('OpenPhoneBook.toolbar.Phonebook');
+        
+        this.bbar = this.bbar || Ext.create('Ext.toolbar.Paging', {
             store: this.store,
             displayInfo: true
         });

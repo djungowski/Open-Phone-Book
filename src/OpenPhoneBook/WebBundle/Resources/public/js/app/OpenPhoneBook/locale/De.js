@@ -15,7 +15,10 @@ Ext.define('OpenPhoneBook.locale.De', {
         'phonebook.name': 'Nachname',
         'phonebook.firstname': 'Vorname',
         'phonebook.room': 'Raum',
-        'phonebook.directaccess': 'Durchwahl'
+        'phonebook.directaccess': 'Durchwahl',
+        
+        // Sonstiges im Telefonbuch
+        'phonebook.tbar.searchtext': 'Suche'
     }
         
 });
