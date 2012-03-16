@@ -12,7 +12,7 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
             model: 'OpenPhoneBook.data.model.Phonebook',
             proxy: {
                 type: 'ajax',
-                url: 'phonebook/',
+                url: 'phonebook',
                 reader: {
                     type: 'json',
                     root: ''

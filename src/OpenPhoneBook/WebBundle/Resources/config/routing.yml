@@ -1,3 +1,7 @@
 OpenPhoneBookWebBundle_homepage:
     pattern:  /
     defaults: { _controller: OpenPhoneBookWebBundle:Default:index }
+
+OpenPhoneBookWebBundle_phonebook:
+    pattern: /phonebook
+    defaults: { _controller: OpenPhoneBookWebBundle:Phonebook:index }
