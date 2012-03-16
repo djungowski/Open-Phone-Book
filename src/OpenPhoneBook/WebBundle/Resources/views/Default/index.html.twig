@@ -2,6 +2,12 @@
 <html>
 <head>
 	<title>Open Phone Book</title>
+	<base href="{{ app.request.getBasePath() }}/" />
+	
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/openphonebook/js/extjs/resources/css/ext-all.css') }}" />
+	<script type="text/javascript" src="{{ asset('bundles/openphonebook/js/extjs/ext.js') }}"></script>
+	<!--<script type="text/javascript" src="{{ asset('bundles/openphonebook/js/extjs/locale/ext-lang-de.js') }}"></script>-->
+	<script type="text/javascript" src="{{ asset('bundles/openphonebook/js/app.js') }}"></script>
 </head>
 <body>
 </body>
