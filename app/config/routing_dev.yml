@@ -1,6 +1,6 @@
-_welcome:
-    pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+#_welcome:
+#    pattern:  /
+#    defaults: { _controller: AcmeDemoBundle:Welcome:index }
 
 _demo_secured:
     resource: "@AcmeDemoBundle/Controller/SecuredController.php"
@@ -32,4 +32,4 @@ _main:
 
 OpenPhoneBookWebBundle:
     resource: "@OpenPhoneBookWebBundle/Resources/config/routing.yml"
-    prefix:   /opb
+    prefix:   /

@@ -14,6 +14,5 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return array();
-//        return $this->render('OpenPhoneBookWebBundle:Default:index.html.twig', array('name' => $name));
     }
 }
