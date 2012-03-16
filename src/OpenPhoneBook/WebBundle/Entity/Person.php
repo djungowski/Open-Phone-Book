@@ -4,8 +4,8 @@ namespace OpenPhoneBook\WebBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Entity
  * @ORM\Table(name="person")
- * 
  *
  */
 class Person
@@ -42,94 +42,94 @@ class Person
      * @ORM\Column(type="integer")
      */
     protected $directaccess;
-    
+
     /**
      * Get id
-     * 
-	 * @return Integer
+     *
+     * @return integer 
      */
     public function getId()
     {
         return $this->id;
     }
-    
-	/**
-     * Get name
-     * 
-	 * @return String
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    
+
     /**
-     * Sets name
+     * Set name
      *
-     * @param String $name
+     * @param string $name
      */
     public function setName($name)
     {
         $this->name = $name;
     }
-    
-	/**
-     * Get first name
-     * 
-	 * @return String
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
      */
     public function getFirstname()
     {
         return $this->firstname;
     }
-    
+
     /**
-     * Sets first name
+     * Set room
      *
-     * @param String $firstname
+     * @param integer $room
      */
-    public function setFirstname($firstname)
+    public function setRoom($room)
     {
-        $this->name = $firstname;
+        $this->room = $room;
     }
-    
-	/**
-     * Get direct access
-     * 
-	 * @return Integer
-     */
-    public function getDirectaccess()
-    {
-        return $this->directaccess;
-    }
-    
+
     /**
-     * Sets direct access
-     *
-     * @param Integer $directaccess
-     */
-    public function setDirectaccess($directacccess)
-    {
-        $this->directaccess = $directacccess;
-    }
-    
-	/**
      * Get room
-     * 
-	 * @return Integer
+     *
+     * @return integer 
      */
     public function getRoom()
     {
         return $this->room;
     }
-    
+
     /**
-     * Sets room
+     * Set directaccess
      *
-     * @param Integer $room
+     * @param integer $directaccess
      */
-    public function setRoom($room)
+    public function setDirectaccess($directaccess)
     {
-        $this->room = $room;
+        $this->directaccess = $directaccess;
+    }
+
+    /**
+     * Get directaccess
+     *
+     * @return integer 
+     */
+    public function getDirectaccess()
+    {
+        return $this->directaccess;
     }
 }
