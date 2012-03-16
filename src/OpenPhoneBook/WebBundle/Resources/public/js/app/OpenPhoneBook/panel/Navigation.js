@@ -22,11 +22,11 @@ Ext.define('OpenPhoneBook.panel.Navigation', {
         this.items = this.items || [];
         
         menuItemLogin = Ext.create('Ext.menu.Item', {
-            text: 'Einloggen'
+            text: OpenPhoneBook.Locale.trans('nav.login')
         });
         
         menuItemList = Ext.create('Ext.menu.Item', {
-            text: 'Telefonbuch anzeigen'
+            text: OpenPhoneBook.Locale.trans('nav.phonebook')
         });
         
         menu = Ext.create('Ext.menu.Menu', {

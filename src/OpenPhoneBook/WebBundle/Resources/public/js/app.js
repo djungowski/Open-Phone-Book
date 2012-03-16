@@ -6,6 +6,7 @@ Ext.application({
     
     launch: function() {
         var navigation,
+            phonebook,
             main;
         
         this.registerNamespaces();
@@ -15,10 +16,16 @@ Ext.application({
             region: 'west'
         });
         
+        phonebook = Ext.create('OpenPhoneBook.panel.Phonebook'); 
+        
         main = Ext.create('Ext.panel.Panel', {
             title: OpenPhoneBook.Locale.trans('panel.main'),
+            layout: 'fit',
             region: 'center',
-            frame: true
+            frame: true,
+            items: [
+                phonebook
+            ]
         });
         
         Ext.create('Ext.container.Viewport', {
