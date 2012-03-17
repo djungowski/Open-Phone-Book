@@ -29,8 +29,6 @@ class PhonebookController extends Controller
                         ->setParameter(2, $query)
                         ->getQuery();
             $persons = $query->getResult();
-            
-//            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findByName($query);
         } else {            
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
         }
