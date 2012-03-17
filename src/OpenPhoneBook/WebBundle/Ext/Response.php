@@ -12,6 +12,12 @@ class Response extends HttpResponse
      */
     private $_serializer;
     
+    /**
+     * Response Implementation usable with Ext JS 
+     *
+     * @param \JMS\SerializerBundle\Serializer\SerializerInterface $serializer
+     * @param Integer $status
+     */
     public function __construct(\JMS\SerializerBundle\Serializer\SerializerInterface $serializer, $status = 200)
     {
         $this->_serializer = $serializer;
@@ -22,13 +28,30 @@ class Response extends HttpResponse
         parent::__construct('', $status, $headers);
     }
     
+    /**
+     * Get the configured serializer
+     * 
+     * @return \JMS\SerializerBundle\Serializer\SerializerInterface
+     */
     public function getSerializer()
     {
         return $this->_serializer;
     }
     
+    /**
+     * Set the Content for the htttp response. Must be an array!
+     *
+     * @see Symfony\Component\HttpFoundation.Response::setContent()
+     * 
+     * @param String $content
+     * 
+     */
     public function setContent($content)
     {
+        $content = array(
+            'record' => $content,
+            'total' => count($content)
+        );
         $content = $this->_serializer->serialize($content, 'json');
         parent::setContent($content);
     }

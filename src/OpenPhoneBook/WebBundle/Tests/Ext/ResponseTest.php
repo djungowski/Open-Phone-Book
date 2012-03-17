@@ -61,6 +61,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $response = new Response($serializer);
         
         $response->setContent($content);
-        self::assertSame($response->getContent(), '["value1","value2","value3"]');
+        self::assertSame('{"record":["value1","value2","value3"],"total":3}', $response->getContent());
     }
 }
