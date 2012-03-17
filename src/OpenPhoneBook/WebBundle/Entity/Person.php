@@ -45,7 +45,7 @@ class Person
     
     /**
      * @ORM\Column(type="integer")
-     * @ORM\OneToMany(targetEntity="Company")
+     * @ORM\ManyToOne(targetEntity="Company")
      * 
      */
     protected $company;
