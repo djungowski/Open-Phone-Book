@@ -16,7 +16,10 @@ class PhonebookController extends Controller
     {
         $request = $this->get('request');
         $doctrine = $this->getDoctrine()->getEntityManager();
+        
         $query = (string)$request->get('q');
+        $start = (int)$request->get('start') || 0;
+        $limit = (int)$request->get('limit') || 25;
         
         if (!empty($query)) {
             $queryLike = '%' . str_replace(' ', '%', $query) . '%';
@@ -27,11 +30,17 @@ class PhonebookController extends Controller
                         ->where('p.name LIKE ?1 OR p.firstname LIKE ?1 OR p.room = ?2 OR p.directaccess = ?2')
                         ->setParameter(1, $queryLike)
                         ->setParameter(2, $query)
+                        ->setFirstResult($start)
+                        ->setMaxResults($limit)
                         ->getQuery();
-            $persons = $query->getResult();
-        } else {            
-            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
+        } else {
+            $qb = $doctrine->getRepository('OpenPhoneBookWebBundle:Person')->createQueryBuilder('p');
+            $query = $qb->setFirstResult($start)
+                        ->setMaxResults($limit)
+                        ->getQuery();
         }
+        
+        $persons = $query->getResult();
         
         $response = new Response($this->container->get('serializer'), $persons);
         return $response;
