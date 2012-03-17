@@ -18,15 +18,19 @@ class PhonebookController extends Controller
         $doctrine = $this->getDoctrine()->getEntityManager();
         $query = (string)$request->get('q');
         
-        if (!empty($query)) {            
-//            $qb = $doctrine->createQueryBuilder();
-//            $query = $qb->select('p')
-//                        ->from('OpenPhoneBookWebBundle:Person', 'p')
-//                        ->innerJoin('p.company', 'c')
-//                        ->where('c.id = p.id')
-//                        ->getQuery();
+        if (!empty($query)) {
+            $queryLike = '%' . str_replace(' ', '%', $query) . '%';
+                        
+            $qb = $doctrine->createQueryBuilder();
+            $query = $qb->select('p')
+                        ->from('OpenPhoneBookWebBundle:Person', 'p')
+                        ->where('p.name LIKE ?1 OR p.firstname LIKE ?1 OR p.room = ?2 OR p.directaccess = ?2')
+                        ->setParameter(1, $queryLike)
+                        ->setParameter(2, $query)
+                        ->getQuery();
+            $persons = $query->getResult();
             
-            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findByName($query);
+//            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findByName($query);
         } else {            
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
         }
