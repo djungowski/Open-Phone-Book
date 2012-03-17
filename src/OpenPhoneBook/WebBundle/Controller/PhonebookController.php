@@ -4,9 +4,7 @@ namespace OpenPhoneBook\WebBundle\Controller;
 use Doctrine\ORM\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
-// @TODO: Remove from here
-use Symfony\Component\HttpFoundation\Response;
+use OpenPhoneBook\WebBundle\Ext\Response;
 
 class PhonebookController extends Controller
 {
@@ -17,8 +15,6 @@ class PhonebookController extends Controller
     public function indexAction()
     {
         $request = $this->get('request');
-        $serializer = $this->container->get('serializer');
-                
         $query = (string)$request->get('q');
         
         if (!empty($query)) {
@@ -27,18 +23,8 @@ class PhonebookController extends Controller
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
         }
         
-        $data = array(
-            'record' => $persons,
-            'total' => count($persons)
-        );
-        
-        $response = new Response(
-            $serializer->serialize($data, 'json'),
-            200,
-            array(
-            	'Content-type' => 'application/json; charset=utf-8'
-            )
-        );
+        $response = new Response($this->container->get('serializer'));
+        $response->setContent($persons);
         return $response;
     }
 }

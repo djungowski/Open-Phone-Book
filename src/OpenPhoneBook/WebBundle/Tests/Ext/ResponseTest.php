@@ -7,7 +7,13 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 {
     private function getSerializerMock()
     {
-        return $this->getMock('\JMS\SerializerBundle\Serializer\SerializerInterface');
+        $serializer = $this->getMock('\JMS\SerializerBundle\Serializer\SerializerInterface');
+        $serializer->expects($this->any())
+             ->method('serialize')
+             ->will($this->returnCallback(function($in) {
+                 return json_encode($in);
+             }));
+        return $serializer;
     }
     
     public function testHeritage()
@@ -18,7 +24,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     
     public function testCodeIsPassedThrough()
     {
-        $response = new Response($this->getSerializerMock(), 400);
+        $response = new Response($this->getSerializerMock(), array(), 400);
         self::assertEquals(400, $response->getStatusCode());
     }
     
@@ -43,7 +49,14 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         self::assertSame($mock, $response->getSerializer());
     }
     
-    public function testSetContentArrayWithSerializer()
+    public function testDefaultContent()
+    {
+        $serializer = $this->getSerializerMock();
+        $response = new Response($serializer);
+        self::assertSame('{"record":[],"total":0}', $response->getContent());
+    }
+    
+    public function testCreationWithContent()
     {
         $content = array(
             'value1',
@@ -52,12 +65,19 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         );
         
         $serializer = $this->getSerializerMock();
-        $serializer->expects($this->any())
-             ->method('serialize')
-             ->will($this->returnCallback(function($in) {
-                 return json_encode($in);
-             }));
+        $response = new Response($serializer, $content);
+        self::assertSame('{"record":["value1","value2","value3"],"total":3}', $response->getContent());
+    }
+    
+    public function testSetContent()
+    {
+        $content = array(
+            'value1',
+            'value2',
+            'value3'
+        );
         
+        $serializer = $this->getSerializerMock();        
         $response = new Response($serializer);
         
         $response->setContent($content);

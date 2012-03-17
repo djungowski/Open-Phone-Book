@@ -21,9 +21,10 @@ class Response extends HttpResponse
      * Response Implementation usable with Ext JS 
      *
      * @param \JMS\SerializerBundle\Serializer\SerializerInterface $serializer
+     * @param Array $content
      * @param Integer $status
      */
-    public function __construct(\JMS\SerializerBundle\Serializer\SerializerInterface $serializer, $status = 200)
+    public function __construct(\JMS\SerializerBundle\Serializer\SerializerInterface $serializer, Array $content = array(), $status = 200)
     {
         $this->_serializer = $serializer;
         
@@ -31,6 +32,8 @@ class Response extends HttpResponse
         	'Content-type' => 'application/json; charset=utf-8'
         );
         parent::__construct('', $status, $headers);
+        
+        $this->setContent($content);
     }
     
     /**
