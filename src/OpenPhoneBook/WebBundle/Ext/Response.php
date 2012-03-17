@@ -3,6 +3,11 @@ namespace OpenPhoneBook\WebBundle\Ext;
 
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
+/**
+ * 
+ * @author djungowski
+ *
+ */
 class Response extends HttpResponse
 {
     /**
