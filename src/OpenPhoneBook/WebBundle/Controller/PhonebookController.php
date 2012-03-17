@@ -18,7 +18,7 @@ class PhonebookController extends Controller
     public function indexAction()
     {
         $request = $this->get('request');
-        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
+        $serializer = $this->container->get('serializer');
                 
         $query = (string)$request->get('q');
         
