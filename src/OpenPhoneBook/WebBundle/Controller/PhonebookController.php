@@ -23,8 +23,7 @@ class PhonebookController extends Controller
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
         }
         
-        $response = new Response($this->container->get('serializer'));
-        $response->setContent($persons);
+        $response = new Response($this->container->get('serializer'), $persons);
         return $response;
     }
 }
