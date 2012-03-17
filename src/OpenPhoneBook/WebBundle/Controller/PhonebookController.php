@@ -17,8 +17,16 @@ class PhonebookController extends Controller
      */
     public function indexAction()
     {
+        $request = $this->get('request');
         $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new JsonEncoder()));
-        $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
+                
+        $query = (string)$request->get('q');
+        
+        if (!empty($query)) {
+            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findByName($query);
+        } else {
+            $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
+        }
         
         $data = array(
             'record' => $persons,
