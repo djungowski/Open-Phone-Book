@@ -3,6 +3,12 @@ namespace OpenPhoneBook\WebBundle\Ext;
 
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
+/**
+ * @author djungowski
+ * 
+ * @group unit
+ *
+ */
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
     private function getSerializerMock()

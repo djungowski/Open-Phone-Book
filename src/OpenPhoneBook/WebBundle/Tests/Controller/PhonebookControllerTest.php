@@ -3,6 +3,12 @@ namespace OpenPhoneBook\WebBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @author djungowski
+ * 
+ * @group functional
+ *
+ */
 class PhonebookControllerTest extends WebTestCase
 {
     public function testIndex()
