@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Person
 {
     /**
-     * @var integer id
      * 
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -40,8 +39,16 @@ class Person
     
     /**
      * @ORM\Column(type="integer")
+     * 
      */
     protected $directaccess;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="Company")
+     * 
+     */
+    protected $company;
 
     /**
      * Get id
@@ -132,8 +139,24 @@ class Person
     {
         return $this->directaccess;
     }
-    
-    public function toArray() {
-        return get_object_vars($this);
+
+    /**
+     * Set company
+     *
+     * @param integer $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * Get company
+     *
+     * @return integer 
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 }
