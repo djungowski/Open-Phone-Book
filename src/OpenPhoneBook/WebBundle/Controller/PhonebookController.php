@@ -1,12 +1,11 @@
 <?php
 namespace OpenPhoneBook\WebBundle\Controller;
 
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Serializer;
 use Doctrine\ORM\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+// @TODO: Remove from here
 use Symfony\Component\HttpFoundation\Response;
 
 class PhonebookController extends Controller
@@ -37,8 +36,7 @@ class PhonebookController extends Controller
             $serializer->serialize($data, 'json'),
             200,
             array(
-            	'Content-type', 
-            	'application/json; charset=utf-8'
+            	'Content-type' => 'application/json; charset=utf-8'
             )
         );
         return $response;
