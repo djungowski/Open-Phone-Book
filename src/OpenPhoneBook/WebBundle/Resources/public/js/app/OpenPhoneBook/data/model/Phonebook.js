@@ -8,6 +8,7 @@ Ext.define('OpenPhoneBook.data.model.Phonebook', {
         {name: 'firstname', type: 'string'},
         {name: 'room', type: 'int'},
         {name: 'directaccess', type: 'int'},
+        {name: 'company', type: 'auto'},
     ]
     
 });

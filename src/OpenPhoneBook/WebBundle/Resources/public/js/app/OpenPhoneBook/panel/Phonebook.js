@@ -25,6 +25,9 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
             {header: OpenPhoneBook.Locale.trans('phonebook.firstname'), dataIndex: 'firstname'},
             {header: OpenPhoneBook.Locale.trans('phonebook.directaccess'), dataIndex: 'directaccess'},
             {header: OpenPhoneBook.Locale.trans('phonebook.room'), dataIndex: 'room'},
+            {header: OpenPhoneBook.Locale.trans('phonebook.company'), dataIndex: 'company', renderer: function(value) {
+                return value.name;
+            }},
         ];
         
         this.tbar = this.tbar || Ext.create('OpenPhoneBook.toolbar.Phonebook');

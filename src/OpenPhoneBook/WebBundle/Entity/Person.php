@@ -1,4 +1,5 @@
 <?php
+use OpenPhoneBook\WebBundle\Entity\Company;
 namespace OpenPhoneBook\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -44,8 +45,11 @@ class Person
     protected $directaccess;
     
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="Company")
+     * @var Company $company
+     * 
+     * 
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="id")
+     * @ORM\JoinColumn(name="company", referencedColumnName="id")
      * 
      */
     protected $company;

@@ -15,6 +15,8 @@ class Company
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
+     * @ORM\OneToMany(targetEntity="Person", mappedBy="company")
+     * 
      */
     protected $id;
     

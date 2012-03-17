@@ -15,11 +15,19 @@ class PhonebookController extends Controller
     public function indexAction()
     {
         $request = $this->get('request');
+        $doctrine = $this->getDoctrine()->getEntityManager();
         $query = (string)$request->get('q');
         
-        if (!empty($query)) {
+        if (!empty($query)) {            
+//            $qb = $doctrine->createQueryBuilder();
+//            $query = $qb->select('p')
+//                        ->from('OpenPhoneBookWebBundle:Person', 'p')
+//                        ->innerJoin('p.company', 'c')
+//                        ->where('c.id = p.id')
+//                        ->getQuery();
+            
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findByName($query);
-        } else {
+        } else {            
             $persons = $this->getDoctrine()->getRepository('OpenPhoneBookWebBundle:Person')->findAll();
         }
         
