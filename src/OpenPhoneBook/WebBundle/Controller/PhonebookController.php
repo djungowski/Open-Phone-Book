@@ -1,15 +1,10 @@
 <?php
-
 namespace OpenPhoneBook\WebBundle\Controller;
 
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-
 use Symfony\Component\Serializer\Serializer;
-
 use Doctrine\ORM\Query;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;

@@ -28,6 +28,9 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
         ];
         
         this.tbar = this.tbar || Ext.create('OpenPhoneBook.toolbar.Phonebook');
+        this.tbar.on('search', function(searchTerm) {
+            // Implement store reload here
+        });
         
         this.bbar = this.bbar || Ext.create('Ext.toolbar.Paging', {
             store: this.store,

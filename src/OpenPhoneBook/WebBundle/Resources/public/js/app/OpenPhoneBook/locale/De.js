@@ -18,7 +18,7 @@ Ext.define('OpenPhoneBook.locale.De', {
         'phonebook.directaccess': 'Durchwahl',
         
         // Sonstiges im Telefonbuch
-        'phonebook.tbar.searchtext': 'Suche'
+        'phonebook.tbar.searchtext': 'Suchen'
     }
         
 });
