@@ -36,11 +36,11 @@ Ext.define('OpenPhoneBook.panel.Phonebook', {
             this.store.load();
         }, this);
         
-        this.bbar = this.bbar || Ext.create('Ext.toolbar.Paging', {
+/*        this.bbar = this.bbar || Ext.create('Ext.toolbar.Paging', {
             store: this.store,
             displayInfo: true
         });
-        
+*/        
         this.on('render', function() {
             this.store.load();
         }, this);
