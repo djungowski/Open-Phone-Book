@@ -18,8 +18,10 @@ class PhonebookController extends Controller
         $doctrine = $this->getDoctrine()->getEntityManager();
         
         $query = (string)$request->get('q');
-        $start = (int)$request->get('start') || 0;
-        $limit = (int)$request->get('limit') || 25;
+        $start = (int)$request->get('start');
+		if ($start == 0) $start = 0;
+        $limit = (int)$request->get('limit');
+		if ($limit == 0) $limit = 25;
         
         if (!empty($query)) {
             $queryLike = '%' . str_replace(' ', '%', $query) . '%';
@@ -39,7 +41,7 @@ class PhonebookController extends Controller
                         ->setMaxResults($limit)
                         ->getQuery();
         }
-        
+
         $persons = $query->getResult();
         
         $response = new Response($this->container->get('serializer'), $persons);
