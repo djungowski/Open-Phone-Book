@@ -29,9 +29,9 @@ class PhonebookController extends Controller
             $qb = $doctrine->createQueryBuilder();
             $query = $qb->select('p')
                         ->from('OpenPhoneBookWebBundle:Person', 'p')
-                        ->where('p.name LIKE ?1 OR p.firstname LIKE ?1 OR p.room = ?2 OR p.directaccess = ?2')
+                        ->where('p.name LIKE ?1 OR p.firstname LIKE ?1 OR p.room LIKE ?1 OR p.directaccess LIKE ?1')
                         ->setParameter(1, $queryLike)
-                        ->setParameter(2, $query)
+//                        ->setParameter(2, $query)
 //                        ->setFirstResult($start)
 //                        ->setMaxResults($limit)
                         ->getQuery();
@@ -42,7 +42,6 @@ class PhonebookController extends Controller
                         ->getQuery();*/
             $query = $qb->getQuery();			 
         }
-
         $persons = $query->getResult();
         
         $response = new Response($this->container->get('serializer'), $persons);
